@@ -18,6 +18,31 @@
   background-color: skyblue;
   border: 1px solid;
   cursor: pointer;
+   
+}
+
+.invalid-input{
+  display: block;
+  color: red;
+  margin-left: 24px;
+  margin-top: -20px;
+}
+
+.nav-right{
+  text-align: right;
+}
+
+.logo {
+  border-radius: 50%;
+  width: 45px;
+  float: left;
+  margin-top: 3px;
+  margin-left: 25px;
+}
+
+.login, .product{
+  margin-left: 30%;
+  margin-top: 100px;
 }
 
 .register{

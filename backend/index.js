@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("./db/config.js");
 const User = require("./db/User.js");
+const Product = require('./db/Product');
 
 const app = express();
 app.use(express.json());
@@ -19,16 +20,22 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   console.log(req.body);
   if (req.body.password && req.body.email) {
-    const user = await User.find(req.body).select("-password");
+    const user = await User.findOne(req.body).select("-password");
     if (user) {
       res.send(user);
     } else {
-      console.log({ result: "No user found!! inside" });
+      res.send({result: 'No user found!! inside'})
     }
   } else {
     res.send({ result: "No user found!! outside" });
   }
 });
+
+app.post('/add-product', async(req, res)=>{
+    let product = new Product(req.body);
+    let result = await product.save();
+    res.send(result);
+})
 
 // const connectDB = async()=>{
 //     mongoose.connect('mongodb://localhost:27017/e-comm');

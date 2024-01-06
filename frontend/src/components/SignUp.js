@@ -11,15 +11,13 @@ const SignUp = ()=>{
     useEffect(()=>{
         const auth = localStorage.getItem('user');
         if(auth){
-            navigate('/');
+            navigate('/profile');
         }
-    })
+    },[])
 
     const collectData = async()=>{
         // console.log(name, email, password);
-        setName("");
-        setEmail("");
-        setPassword("");
+        
         const result = await fetch('http://localhost:5000/register',{
             method:'post',
             body:JSON.stringify({name, email, password}),
@@ -31,8 +29,12 @@ const SignUp = ()=>{
         console.log(data)
         localStorage.setItem('user',JSON.stringify(data));
         if(data){
-            navigate('/');
+            navigate('/profile');
         }
+
+        setName("");
+        setEmail("");
+        setPassword("");
     }
     return(
         <div className="register">
