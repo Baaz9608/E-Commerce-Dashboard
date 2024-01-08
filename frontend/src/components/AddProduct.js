@@ -22,7 +22,14 @@ const AddProduct = () => {
     });
     const data = await result.json();
     console.log(data);
+    alert("Item added successfully")
+    setName('');
+    setPrice('');
+    setCategory('');
+    setCompany('');
   };
+
+  
   return (
     <div className="product">
       <h1>Add Product</h1>

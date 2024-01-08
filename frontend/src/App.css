@@ -59,6 +59,30 @@
   margin: 0;
   background-color: skyblue;
 }
+
+.product-list{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.product-list ul li{
+   display: inline-block;
+   border: 1px solid skyblue;
+   padding: 5px;
+   width: 150px;
+   
+}
+.product-list ul {
+  margin: 0;
+}
+.btn{
+  cursor: pointer;
+  color: red;
+  background-color: azure;
+  border-radius: 30px;
+  border: 1px solid skyblue;
+}
+
 .footer{
   position: absolute;
   bottom: 0;

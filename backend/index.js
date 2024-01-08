@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-require("./db/config.js");
+const conn = require("./db/config");
+ 
+ 
 const User = require("./db/User.js");
 const Product = require('./db/Product');
 
@@ -13,7 +15,7 @@ app.post("/register", async (req, res) => {
   let data = await user.save();
   data = data.toObject();
   delete data.password;
-  console.log(data);
+   
   res.send(data);
 });
 
@@ -37,6 +39,25 @@ app.post('/add-product', async(req, res)=>{
     res.send(result);
 })
 
+app.get('/products', async(_, res)=>{
+  let product = await Product.find();
+  if(product.length>0){
+     
+    res.send({product})
+  }else{
+    res.send({result: 'No products found!!!'})
+  }
+})
+
+app.delete('/product/:id', async(req, res)=>{
+  const result = await Product.deleteOne({_id: req.params.id});
+  res.send(result);
+})
+app.delete('/user/:id', async(req, res)=>{
+  const result = await User.deleteOne({_id: req.params.id});
+  res.send(result);
+})
+
 // const connectDB = async()=>{
 //     mongoose.connect('mongodb://localhost:27017/e-comm');
 //     const productSchema = new mongoose.Schema({
@@ -50,7 +71,7 @@ app.post('/add-product', async(req, res)=>{
 // }
 // connectDB();
 
-app.get("/", (req, res) => {
-  res.send("done");
-});
+// app.get("/", (req, res) => {
+//   res.send("done");
+// });
 app.listen(5000, console.log(`app is running on 5000`));
