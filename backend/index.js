@@ -58,6 +58,15 @@ app.delete('/user/:id', async(req, res)=>{
   res.send(result);
 })
 
+app.get('/product/:id', async(req, res)=>{
+  let result = await Product.findOne({_id: req.params.id});
+  if(result){
+    res.send(result);
+  }else{
+    res.send({result: "No record found"})
+  }
+})
+
 // const connectDB = async()=>{
 //     mongoose.connect('mongodb://localhost:27017/e-comm');
 //     const productSchema = new mongoose.Schema({

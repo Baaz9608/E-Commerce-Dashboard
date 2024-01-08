@@ -75,7 +75,10 @@
 .product-list ul {
   margin: 0;
 }
+
 .btn{
+  text-decoration: none;
+  margin-right: 10px;
   cursor: pointer;
   color: red;
   background-color: azure;
