@@ -76,6 +76,14 @@
   margin: 0;
 }
 
+.searchInput {
+  margin: 20px;
+  height: 33px;
+  width: 312px;
+  padding-left: 15px;
+  border: 1px solid skyblue;
+}
+
 .btn{
   text-decoration: none;
   margin-right: 10px;
